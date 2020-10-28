@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>headerlinks}}
+    <script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  en="AM";
+  if(h>=12){
+      en="PM";
+  }
+  if(h>12){
+      h=h-12;;
+  }
+  if(h===0){
+      h=12;
+  }
+  if(h<10){
+      h="0"+h;
+  }
+  if(m<10){
+      m="0"+m;
+  }
+  if(s<10){
+      s="0"+s;
+  }
+  document.getElementById('txt').innerHTML =
+  h + ":" + m + ":" + s + " " + en;
+  var t = setTimeout(startTime, 500);
+}
+</script>
+</head>
+
+<body onload="startTime()">
+    {{>navbar}}
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <div class="main_content">
+                    <form class="temp_form">
+                           <input type="text" id="cityName" placeholder="Enter your city" autocomplete="off">
+                           <input type="submit" value="search" id="submitBtn">
+                    </form>
+
+                </div>
+                <div class="tempInformation">
+                    <div class="top_layer">
+                        <p id="day"></p>
+                        <p id="txt">13 Oct</p>
+
+                    </div>
+                    <div class="main_layer ">
+                        <p id="city_name">Get Output Here</p>
+                        <div class="middle_layer data_hide">
+                            <p id="temp"><span id="temp_real_val">0</span> <sup>o</sup>C</p>
+                            <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{>footer}}
+    <script src="js/main.js"></script>
+    <script>
+        
+        function getCurrentDay(){
+            n =  new Date();
+            y = n.getFullYear();
+            m = n.getMonth() + 1;
+            d = n.getDate();
+            document.getElementById("day").innerHTML =n.toDateString();
+         };
+         getCurrentDay();
+        
+        
+    </script>
+    
+</body>
+
+</html>
