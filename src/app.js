@@ -23,7 +23,7 @@ app.get("/weather", (req, res) => {
 })
 app.get("*", (req, res) => {
     res.render("404error", {
-        errorMsg: "Opps! Page your requested is not available."
+        errorMsg: "Opps! Page you requested is not available."
     })
 })
 app.listen(port, () => {
